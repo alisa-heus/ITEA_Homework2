@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -11,52 +10,47 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _timerText;
     [SerializeField] private GameObject[] _walls;
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private CharacterMovement _character;
 
-    public bool timerOn;
+    public bool TimerOn;
 
-    private float timeLeft = 50f;
-    private CharacterMovement _characterMovement;
+    private float _timeLeft = 50f;
+    private float _changingColorsInterval = 2.2f;
+    private float _resetGameTime = 3f;
 
-    void Start()
+    private void Start()
     {
-        timerOn = true;
-        _characterMovement = GameObject.Find("Player").GetComponent<CharacterMovement>();
-        InvokeRepeating("ChangeColor", 0, 2.2f);
+        TimerOn = true;
+        InvokeRepeating("ChangeColor", 0, _changingColorsInterval);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(timerOn)
+        if(TimerOn)
         {
-            if(timeLeft > 0)
+            if(_timeLeft > 0)
             {
-                timeLeft -= Time.deltaTime;
+                _timeLeft -= Time.deltaTime;
             }
             else
             {
-                timeLeft = 0;
-                timerOn = false;
-                Debug.Log("Time is up! Your score is: " + _characterMovement.Score);
-                _timerText.text = "Score: " + _characterMovement.Score;
-                Invoke("ResetGame", 3f);
+                _timeLeft = 0;
+                TimerOn = false;
+                Debug.Log("Time is up! Your score is: " + _character.Score);
+                _timerText.text = $"Score: {_character.Score}";
+                Invoke("ResetGame", _resetGameTime);
             }
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
         }
     }
     public void ChangeColor()
     {
-        if(timerOn == false) { return; }
+        if(TimerOn == false) { return; }
         foreach(var wall  in _walls) 
         {
             wall.GetComponent<Renderer>().material = _materials[Random.Range(0, _materials.Length)];
         }
 
-        _characterMovement.transform.Find("Body").GetComponent<Renderer>().material = 
+        _character.transform.Find("Body").GetComponent<Renderer>().material = 
         _walls[Random.Range(0, _walls.Length)].GetComponent<Renderer>().material;
     }
 

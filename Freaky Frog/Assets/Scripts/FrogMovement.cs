@@ -4,27 +4,41 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class FrogMovement : MonoBehaviour
-{
-
-    public float jumpForce = 10f; 
-    private Rigidbody2D rb;
+{ 
+    [SerializeField] private Rigidbody2D _rigidBody;
+    private bool _isGrounded;
+    public float JumpForce = 10f;
+    public LayerMask GroundLayer;
+    public float CircleRadius = .7f;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonUp(0))  // Check for mouse release (left mouse button)
+        _isGrounded = IsGrounded();
+
+        if (Input.GetMouseButtonUp(0) && _isGrounded == true)  
         {
             Jump();
         }
     }
 
-    void Jump()
+    private void Jump()
     {
-        // Check if the character is on the ground or a platform before jumping
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        if (_isGrounded == true) 
+        {
+            Debug.Log("Jumping");
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, JumpForce);
+        }    
+    }
+
+    private bool IsGrounded()
+    {
+        // Check if there is a collider below the object
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, CircleRadius, GroundLayer);
+        // If the collider is not null, then the object is grounded
+        return collider != null;
     }
 }

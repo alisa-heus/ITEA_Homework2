@@ -6,8 +6,13 @@ using UnityEngine;
 public class FrogMovement : MonoBehaviour
 { 
     [SerializeField] private Rigidbody2D _rigidBody;
+    [SerializeField] private float _minHoldTime = .5f;
+    [SerializeField] private float _maxHoldTime = 2f;
+
+    private float _holdTime;
     private bool _isGrounded;
-    public float JumpForce = 10f;
+
+    public float JumpForce = 2f;
     public LayerMask GroundLayer;
     public float CircleRadius = .7f;
     void Start()
@@ -19,9 +24,19 @@ public class FrogMovement : MonoBehaviour
     {
         _isGrounded = IsGrounded();
 
+        if (Input.GetMouseButtonDown(0) && _isGrounded == true)
+        {
+            _holdTime = 0f;
+        }
+
+        if (Input.GetMouseButton(0) && _isGrounded == true)
+        {
+            _holdTime += Time.deltaTime;
+        }
+
         if (Input.GetMouseButtonUp(0) && _isGrounded == true)  
         {
-            Jump();
+            Jump();  
         }
     }
 
@@ -29,7 +44,8 @@ public class FrogMovement : MonoBehaviour
     {
         if (_isGrounded == true) 
         {
-            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, JumpForce);
+            float calculatedJumpForce = Mathf.Clamp(_holdTime, _minHoldTime, _maxHoldTime) * JumpForce;
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, calculatedJumpForce);
         }    
     }
 

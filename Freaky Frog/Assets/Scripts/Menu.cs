@@ -9,7 +9,6 @@ public class Menu : MonoBehaviour
     public Button ExitButton;
     public Button MusicButton;
     public Button SoundButton;
-    public Button LanguageButton;
     public Button FacebookButton;
     public Button DevicesButton;
     public Button AboutButton;
@@ -37,7 +36,6 @@ public class Menu : MonoBehaviour
         ExitButton.onClick.AddListener(DebugInfo);
         MusicButton.onClick.AddListener(ToggleMusic);
         SoundButton.onClick.AddListener(ToggleSound);
-        LanguageButton.onClick.AddListener(ChangeLanguage);
         FacebookButton.onClick.AddListener(ToggleFacebook);
         DevicesButton.onClick.AddListener(LinkDevice);
         AboutButton.onClick.AddListener(ReadAbout);
@@ -81,11 +79,6 @@ public class Menu : MonoBehaviour
         }
     }
 
-    private void ChangeLanguage()
-    {
-        Debug.Log("Changes language");
-    }
-
     private void ToggleFacebook()
     {
         if(_facebookConnected == false)
@@ -117,12 +110,27 @@ public class Menu : MonoBehaviour
         Debug.Log("You enter the FAQ page");
     }
 
+    public void SelectLanguage(int value)
+    {
+        if(value == 0)
+        {
+            Debug.Log("You chose English");
+        }
+        if(value == 1)
+        {
+            Debug.Log("You chose French");
+        }
+        if(value == 2)
+        {
+            Debug.Log("You chose Spanish");
+        }
+    }
+
     private void OnDisable()
     {
         ExitButton.onClick.RemoveListener(DebugInfo);
         MusicButton.onClick.RemoveListener(ToggleMusic);
         SoundButton.onClick.RemoveListener(ToggleSound);
-        LanguageButton.onClick.RemoveListener(ChangeLanguage);
         FacebookButton.onClick.RemoveListener(ToggleFacebook);
         DevicesButton.onClick.RemoveListener(LinkDevice);
         AboutButton.onClick.RemoveListener(ReadAbout);

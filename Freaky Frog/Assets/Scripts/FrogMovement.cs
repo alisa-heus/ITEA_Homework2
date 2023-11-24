@@ -29,7 +29,6 @@ public class FrogMovement : MonoBehaviour
     {
         if (_isGrounded == true) 
         {
-            Debug.Log("Jumping");
             _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, JumpForce);
         }    
     }

@@ -8,6 +8,7 @@ public class FrogMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private float _minHoldTime = .5f;
     [SerializeField] private float _maxHoldTime = 2f;
+    [SerializeField] float _maxMagnitude = 5f;
 
     private float _holdTime;
     private bool _isGrounded;
@@ -22,6 +23,7 @@ public class FrogMovement : MonoBehaviour
 
     private void Update()
     {
+         
         _isGrounded = IsGrounded();
 
         if (Input.GetMouseButtonDown(0) && _isGrounded == true)
@@ -42,12 +44,26 @@ public class FrogMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (_isGrounded == true) 
+        if (_isGrounded)
         {
             float calculatedJumpForce = Mathf.Clamp(_holdTime, _minHoldTime, _maxHoldTime) * JumpForce;
             _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, calculatedJumpForce);
-        }    
+
+            // Jump in the direction of the mouse 
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = transform.position.z;
+
+            Vector2 direction = (mousePosition - transform.position).normalized;
+
+            // Clamp the magnitude to a maximum value (adjust maxMagnitude as needed)
+            
+            direction = Vector2.ClampMagnitude(direction, _maxMagnitude);
+
+            // Apply force in the calculated direction
+            _rigidBody.AddForce(direction * JumpForce, ForceMode2D.Impulse);
+        }
     }
+
 
     private bool IsGrounded()
     {

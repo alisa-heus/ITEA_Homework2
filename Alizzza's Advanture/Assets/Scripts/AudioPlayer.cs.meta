@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 756c5b8975cc71b41861dc57ddb3bc92
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - doughnutClip: {fileID: 8300000, guid: 43c77330d81a8964c92833c19c15fe27, type: 3}
+  - candyClip: {fileID: 8300000, guid: b1eea01f161b1d741b6393727a75b781, type: 3}
+  - healthClip: {instanceID: 0}
+  - tvBoomClip: {instanceID: 0}
+  - bossBoomClip: {instanceID: 0}
+  - playerDeathClip: {instanceID: 0}
+  - exitClip: {fileID: 8300000, guid: 183cf8bfe5e62944b9f6245f5221746d, type: 3}
+  - bounceClip: {instanceID: 0}
+  - wowClip: {instanceID: 0}
+  - clapClip: {instanceID: 0}
+  - tadaClip: {fileID: 8300000, guid: 2c4448f24b1ee654c97f197753d15707, type: 3}
+  executionOrder: 300
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

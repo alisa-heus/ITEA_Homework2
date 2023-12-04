@@ -731,8 +731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a9209044fc8a14cba042c80a89d3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cakePoints: 50
-  cakeParticles: {fileID: 6944703146502211644, guid: e3a36d0d8fb2e3b4d966f0ea5d3d3182, type: 3}
+  _cakePoints: 50
+  _cakeParticles: {fileID: 6944703146502211644, guid: e3a36d0d8fb2e3b4d966f0ea5d3d3182, type: 3}
 --- !u!4 &81796352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3023290919923738125, guid: 6761d14f5c5d37946b77f162a42f20df, type: 3}
@@ -12500,6 +12500,14 @@ PrefabInstance:
       propertyPath: velocity.y
       value: -2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 627504631, guid: 70412baae013ba8428f398f69a68b4db, type: 3}
+      propertyPath: _platformVelocity.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 627504631, guid: 70412baae013ba8428f398f69a68b4db, type: 3}
+      propertyPath: _platformVelocity.y
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 485175902178527143, guid: 70412baae013ba8428f398f69a68b4db, type: 3}
       propertyPath: m_Name
       value: moving platform
@@ -12643,8 +12651,8 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_UpdateMethod: 0
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -90384,7 +90392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70efd2329ebd250448b85750d6b24cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wowSound: {fileID: 1406835282}
+  _wowSound: {fileID: 1406835282}
 --- !u!61 &1406835280
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95466,8 +95474,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4227148349634442399, guid: 864bc001541390f4b848011f27ca61f1, type: 3}
+      propertyPath: _speed
+      value: 4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227148349634442399, guid: 864bc001541390f4b848011f27ca61f1, type: 3}
       propertyPath: jumpSpeed
       value: 6.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227148349634442399, guid: 864bc001541390f4b848011f27ca61f1, type: 3}
+      propertyPath: _jumpForce
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 4227148349634442399, guid: 864bc001541390f4b848011f27ca61f1, type: 3}
       propertyPath: deathKick.x

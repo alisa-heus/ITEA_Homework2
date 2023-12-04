@@ -611,8 +611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f143c3805c2d345917dc5113496b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 780032842284121201, guid: 5ab5e5d500ab3c241895cb63381889d6, type: 3}
-  spawnDelay: 7
+  _fallingEnemy: {fileID: 780032842284121201, guid: 5ab5e5d500ab3c241895cb63381889d6, type: 3}
+  _spawnDelay: 7
 --- !u!4 &392665373
 Transform:
   m_ObjectHideFlags: 0
@@ -904,7 +904,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &520303270
 AudioSource:
@@ -918,13 +918,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 963426860b3a1ee438d5af58b9f96423, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14851,8 +14851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f143c3805c2d345917dc5113496b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 780032842284121201, guid: 5ab5e5d500ab3c241895cb63381889d6, type: 3}
-  spawnDelay: 12
+  _fallingEnemy: {fileID: 780032842284121201, guid: 5ab5e5d500ab3c241895cb63381889d6, type: 3}
+  _spawnDelay: 12
 --- !u!4 &1027340119
 Transform:
   m_ObjectHideFlags: 0
@@ -22355,7 +22355,7 @@ Transform:
   - {fileID: 384729935}
   - {fileID: 1145126541}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2025969847
 GameObject:
@@ -22566,7 +22566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2101142331}
   m_Layer: 0
-  m_Name: BACKGROUND GRASS
+  m_Name: BACKGROUND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22592,7 +22592,7 @@ Transform:
   - {fileID: 430532813}
   - {fileID: 1280516338}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2113248114
 GameObject:
@@ -22736,6 +22736,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 746637888, guid: 65a976163d9f7e54ca203f5bcfa92cb2, type: 3}
+      propertyPath: Priority
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 809944722843916049, guid: 65a976163d9f7e54ca203f5bcfa92cb2, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -22781,8 +22785,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 809944722843916054, guid: 65a976163d9f7e54ca203f5bcfa92cb2, type: 3}
+      propertyPath: _tvBoomVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 809944722843916054, guid: 65a976163d9f7e54ca203f5bcfa92cb2, type: 3}
       propertyPath: bossBoomVolume
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 809944722843916054, guid: 65a976163d9f7e54ca203f5bcfa92cb2, type: 3}
+      propertyPath: _bossBoomVolume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 809944722843916054, guid: 65a976163d9f7e54ca203f5bcfa92cb2, type: 3}
       propertyPath: backgroundMusic
@@ -22803,7 +22815,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1833340559689924354, guid: 4f0637290bf86fb4594b91a9121d43f9, type: 3}
       propertyPath: Health
-      value: 80
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1833340559689924381, guid: 4f0637290bf86fb4594b91a9121d43f9, type: 3}
       propertyPath: m_Name

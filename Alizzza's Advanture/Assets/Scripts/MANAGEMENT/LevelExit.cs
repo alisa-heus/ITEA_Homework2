@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class LevelExit : MonoBehaviour
 {
-    [SerializeField] GameObject exitParticlesPrefab;
-    [SerializeField] float levelLoadDelay = 0.8f;
+    [SerializeField] GameObject _exitParticlesPrefab;
+    [SerializeField] float _levelLoadDelay = 0.8f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            Instantiate(exitParticlesPrefab, transform.position, transform.rotation); 
+            Instantiate(_exitParticlesPrefab, transform.position, transform.rotation); 
             StartCoroutine(LoadNextLevel());
         }       
     }
 
     IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSecondsRealtime(levelLoadDelay);
+        yield return new WaitForSecondsRealtime(_levelLoadDelay);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
@@ -30,5 +30,4 @@ public class LevelExit : MonoBehaviour
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(nextSceneIndex);
     }
-
 }

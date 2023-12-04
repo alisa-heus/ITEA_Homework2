@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    [SerializeField] Vector3 velocity;
-    bool moving;
+    [SerializeField] Vector3 _platformVelocity;
+    private bool _moving;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && collision.gameObject.tag != "Ground")
         {
-            moving = true;
+            _moving = true;
             collision.transform.SetParent(transform);
         }
     }
@@ -26,9 +26,9 @@ public class PlatformMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(moving)
+        if(_moving)
         {
-            transform.position += (velocity * Time.deltaTime);
+            transform.position += (_platformVelocity * Time.deltaTime);
         }
     }
 

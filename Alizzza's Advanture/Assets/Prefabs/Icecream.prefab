@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.57, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!95 &6918940990633580679
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,10 +128,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2090936732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477944692f9d3c447b2ba1ea29b81fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icecreamPoints: 5
-  pickupParticles: {fileID: 6944703146502211644, guid: d17bb766204832b43b4466f46b99cc7a, type: 3}
+  _icecreamPoints: 5
+  _pickupParticles: {fileID: 6944703146502211644, guid: d17bb766204832b43b4466f46b99cc7a, type: 3}

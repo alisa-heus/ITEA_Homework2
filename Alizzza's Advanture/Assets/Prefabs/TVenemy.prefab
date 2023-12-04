@@ -146,6 +146,7 @@ MonoBehaviour:
   _moveSpeed: 1
   _tvExplosionPrefab: {fileID: 6944703146502211644, guid: cb977ad1516e4364eb6edc7f0d8f0847, type: 3}
   _enemyCollider: {fileID: 5204622465561667945}
+  _enemyStopperCollider: {fileID: 5204622465561667950}
 --- !u!61 &5204622465561667945
 BoxCollider2D:
   m_ObjectHideFlags: 0

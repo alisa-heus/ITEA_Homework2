@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class BulletofBoss : MonoBehaviour
 {
-    public Vector2 velocity;
-    Rigidbody2D rb;
+    [SerializeField] Vector2 _velocity;
+    private Rigidbody2D _bulettRigidBody;
     
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _bulettRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = velocity;
+        _bulettRigidBody.velocity = _velocity;
     }
 }

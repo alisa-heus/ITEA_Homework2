@@ -3000,8 +3000,8 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_UpdateMethod: 0
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -28841,10 +28841,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 139388011}
     m_Modifications:
-    - target: {fileID: 894675869, guid: 3e44b0e87bc9d3145abcf7f37cf0fa9b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.80625004
-      objectReference: {fileID: 0}
     - target: {fileID: 3688537373668367579, guid: 3e44b0e87bc9d3145abcf7f37cf0fa9b, type: 3}
       propertyPath: m_Name
       value: sunflower (1)
@@ -30399,7 +30395,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657006171}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
@@ -33147,6 +33143,10 @@ PrefabInstance:
       propertyPath: gun
       value: 
       objectReference: {fileID: 482710615}
+    - target: {fileID: 4227148349634442399, guid: 864bc001541390f4b848011f27ca61f1, type: 3}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4227148349634442399, guid: 864bc001541390f4b848011f27ca61f1, type: 3}
       propertyPath: bullet
       value: 

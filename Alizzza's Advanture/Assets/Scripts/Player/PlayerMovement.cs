@@ -36,11 +36,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_isAlive == false) { return;}
+        if (_isAlive == false) { return; }
         CharacterState();
         ClimbLadder();
         FlipSprite();
-        Die(); 
+        Die();
     }
 
     private void OnQuit(InputValue value)
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputValue value)
     {
         if (_isAlive == false) { return; }
-        moveInput = value.Get<Vector2>();
+        moveInput = value.Get<Vector2>();       
     }
 
     private void OnJump(InputValue value)
@@ -92,7 +92,8 @@ public class PlayerMovement : MonoBehaviour
         if (_hasStarted == false) return;
 
         //Plays jumping animation when not walking and not climbing
-        if (_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) == false && _myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) == false)
+        if (_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) == false 
+        && _myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) == false)
         {
           myAnimator.SetBool("isJumping", true);
         } 
@@ -139,11 +140,13 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetTrigger("Dying");
             _audioPlayer.PlayDeath(); 
             _rigidBody.velocity = _deathKick;
-            Invoke("DeathLevelReload", 0.7f);   
+            StartCoroutine(DeathLevelReload());
         }
     }
-    private void DeathLevelReload()
+
+    IEnumerator DeathLevelReload()
     {
+        yield return new WaitForSeconds(0.7f);
         FindObjectOfType<GameManager>().ProcessPlayerDeath();
     }
 }

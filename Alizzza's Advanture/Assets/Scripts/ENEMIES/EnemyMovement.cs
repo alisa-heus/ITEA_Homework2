@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float _moveSpeed = 1f;
     [SerializeField] GameObject _tvExplosionPrefab;
     [SerializeField] Collider2D _enemyCollider;
+    [SerializeField] Collider2D _enemyStopperCollider;
 
     private Rigidbody2D _enemyRigidbody;
     private Animator _tvAnimator;
@@ -47,15 +48,17 @@ public class EnemyMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(_enemyCollider);
+            Destroy(_enemyStopperCollider);
             _audioPlayer.PlayTvBoom();
             _tvAnimator.SetTrigger("death");
             _moveSpeed = 0;
-            Invoke("TvDeath", 0.6f);
+            StartCoroutine(TvDeath());
             Instantiate(_tvExplosionPrefab, transform.position, transform.rotation);
         }
     }
-    void TvDeath()
+    IEnumerator TvDeath()
     {
-        Destroy(gameObject);       
+        yield return new WaitForSeconds(0.6f);
+        Destroy(this.gameObject);
     }
 }

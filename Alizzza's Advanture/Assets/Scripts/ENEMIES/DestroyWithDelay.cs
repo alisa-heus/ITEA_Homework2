@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class DestroyWithDelay : MonoBehaviour
 {
-    public float delay;
+    [SerializeField] float _delay = 2.5f;
     void Start()
     {
-        Destroy(gameObject, delay);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(gameObject, _delay);
     }
 }

@@ -56,11 +56,6 @@ public class BossAI : MonoBehaviour
         }
     }
 
-    void Reload()
-    {
-        _canFire = true;
-    }
-
     void Jump()
     {
         _bossRigidbody.AddForce(new Vector2(0, JumpSpeed));
@@ -82,9 +77,9 @@ public class BossAI : MonoBehaviour
                 FindObjectOfType<GameManager>().AddLive(1);
                 _audioPlayer.PlayBossBoom();
                 _tvAnimator.SetTrigger("death");
-                Invoke("DestroyBossCollider", .5f);
-                Invoke("BossDeath", 1f);
-                
+                StartCoroutine(DestroyBossCollider());
+                StartCoroutine(BossDeath());
+
                 Instantiate(_noisePrefab, transform.position, transform.rotation);
             }
             if(Health > 0)
@@ -92,24 +87,32 @@ public class BossAI : MonoBehaviour
                 Health--;
                 BossHealth.value = (float)Health;
                 _spriteRenderer.color = Color.red;
-                Invoke("RestoreColor", 0.1f);
+                StartCoroutine(RestoreColor());
             }
         }
     }
 
-    void RestoreColor()
+    void Reload()
     {
-        _spriteRenderer.color = Color.white;
+        _canFire = true;
     }
 
-    void DestroyBossCollider()
+    IEnumerator DestroyBossCollider()
     {
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject.GetComponent<Collider2D>());
     }
 
-    void BossDeath()
+    IEnumerator BossDeath()
     {
+        yield return new WaitForSeconds(1f);
         Instantiate(_tvExplosionPrefab, transform.position, transform.rotation);
-        Destroy(gameObject);   
+        Destroy(gameObject);
+    }
+
+    IEnumerator RestoreColor()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _spriteRenderer.color = Color.white;
     }
 }

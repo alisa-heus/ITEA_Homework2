@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         _gravityScaleAtStart = _rigidBody.gravityScale;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_isAlive == false) { return; }
         CharacterState();

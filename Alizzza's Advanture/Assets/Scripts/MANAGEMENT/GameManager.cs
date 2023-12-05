@@ -42,6 +42,13 @@ public class GameManager : MonoBehaviour
     {
         Score += pointsToAdd;
         _scoreText.text = Score.ToString();
+
+        /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings - 2)
+        {
+            HighScoreManager.SetHighScore(Score);
+        }*/
     }
 
     public void ProcessPlayerDeath()

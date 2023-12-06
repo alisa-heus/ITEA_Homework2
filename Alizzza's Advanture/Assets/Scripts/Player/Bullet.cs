@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     {
         _bulletRigidbody = GetComponent<Rigidbody2D>();
         _player = FindObjectOfType<PlayerMovement>();
-        _xSpeed = _player.transform.localScale.x * _bulletSpeed;  
+        _xSpeed = _player.transform.localScale.x * _bulletSpeed;
     }
     private void Update()
     {
